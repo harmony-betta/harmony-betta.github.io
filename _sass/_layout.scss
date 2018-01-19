@@ -1,0 +1,61 @@
+body {
+	margin: 0;
+	color: $font-color;
+	font-family: $font-style;
+	font-size: 1.1em;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+}
+
+.cocoaa-ice{
+	background: #00c6ff;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #007bff !important;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.dropdown-item:hover {
+	background: #00c6ff;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	color: #fff !important;
+}
+
+.bg-command-line-artisan {
+	background: #00c6ff url('../img/bg-command-line.png') no-repeat center center;
+	background-size: 74%;
+	background-position: 0 30%;
+	height: 350px;
+}
+
+.bg-documentation{
+	background: #00c6ff url('../img/doc.png') no-repeat center center;
+	background-size: 74%;
+	background-position: 75% 0;
+	height: 350px;
+}
+
+@media (max-width: 360px) {
+	.bg-command-line-artisan {
+		background: #00c6ff url('../img/bg-command-line.png') no-repeat bottom center;
+		background-size: 160% !important;
+		background-position-x: 7%;
+		background-size: cover;
+		height: 450px;
+		.wrapper{
+			margin-top: -5.4em;
+		}
+	}
+}

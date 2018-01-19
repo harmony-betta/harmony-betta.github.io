@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<div class="container">
+  <a class="navbar-brand" href="{{ "/" | prepend: site.baseurl }}">
+    <img src="https://image.ibb.co/eLwPxR/logo_harmony.png" alt="logo_harmony" width="50%">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ "/" | prepend: site.baseurl }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      {% for page in site.pages %} {% if page.title %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+      </li>
+      {% endif %} {% endfor %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Ecosystems
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% for sub in site.subpages %} {% if sub.title %}
+          <a class="dropdown-item" href="{{ sub.url | prepend: site.baseurl }}">{{ sub.title }}</a>
+          {% endif %} {% endfor %}
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://harmonyframework.slack.com" target="_blank">Forum</a>
+      </li>
+     <!--  <li class="nav-item">
+        <a class="nav-link" href="{{ "/blog" | prepend: site.baseurl }}">Blog</a>
+      </li> -->
+    </ul>
+  </div>
+</div>
+</nav>
