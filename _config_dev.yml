@@ -6,7 +6,7 @@ email: bettadevindonesia@gmail.com
 description: >
   A guide to getting started with Harmony Framework.
 baseurl: ""
-url: "https://harmony-betta.github.io"
+url: "http://localhost:4000"
 twitter_username: bettadevindonesia
 github_username:  harmony-betta
 # Build Settings
