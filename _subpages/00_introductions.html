@@ -1,6 +1,7 @@
 ---
 layout: page-content
 title: Introductions
+meta: In this first session I will explain what is "Harmony Framework". Harmony is not as good as other existing frameworks, the main purpose of making this framework to simplify my work as a Web Developer.
 permalink: /ecosystem/introductions
 ---
 
@@ -14,68 +15,8 @@ permalink: /ecosystem/introductions
 	<p class="mb-0 small font-italic">The concept is quite simple from the Harmony Framework is a path that insha Allah can make it easier for other developers to understand it, and very friendly with beginner developers.</p>
 </blockquote>
 
-<h4 id="get-started">Getting Started!</h4>
-
-<small>Install with Composer</small>
-<code>
-composer create-project --prefer-dist harmony-betta/harmony project-name -vvv
-</code>
-<small>Or Download ZIP File : <a href="https://github.com/harmony-betta/harmony/archive/0.1.zip"><i class="fa fa-fire"></i> Old Version {{ site.oldversion }}</i></a>&nbsp;&nbsp;<span> &mdash; </span>&nbsp;&nbsp;<a href="https://github.com/harmony-betta/harmony/archive/0.2.zip"><i class="fa fa-fire"></i> Latest Version {{ site.version }}</i></a></small>
-
-<h4>Directory Stucture!</h4>
-<div>
-{% highlight ruby %}
-.
-├── app
-   ├── Controllers
-   ├── Database
-   ├── Middleware
-   ├── Support
-├── artisan
-├── bin
-├── bootstrap
-├── composer.json
-├── composer.lock
-├── config
-   ├── app.container.php
-   ├── app.middleware.php
-├── gulpfile.js
-├── package.json
-├── public
-├── README.md
-├── resources
-   ├── assets
-   ├── views
-├── routes
-   ├── web.php
-└── vendor
-{% endhighlight %}
-</div>
-
-<h4 id="flow-diagram">Harmony Flow</h4>
-
-<img src="{{ "../img/mvc.png" | prepend: site.baseurl }}" alt="MVC" class="img-fluid mb-2">
-
-<p>The Harmony Framework has the exact same flow as the <em>"Laravel Framework"</em>, so if you ever use <em>"Laravel"</em> you will not be confused by using the <b><em>"Harmony Framework"</em></b> and apply otherwise.</p>
-
-<p>The Harmony Framework done behind the scenes is as follows: </p>
-
-<img src="{{ "../img/harmony-flow.png" | prepend: site.baseurl }}" alt="Harmony Flow" class="img-fluid">
-
-<h5 id="routes">1. Routes</h5>
-
-<p>Routing in the Harmony Framework is the definition to redirect users to a specific URL. The first parameter '/' the slash will redirect the user to the root of the website, the second parameter is the name of the Controller that will process the URL request.</p>
-
-<h5 id="controllers">2. Controllers</h5>
-
-<p>In the <kbd>app/Controllers/HomeController.php</kbd> file there is a line of code that will process the request from the route. Each Controller has an index method that will be processed first and provide a response in the form of a template or just a string to display to the user.</p>
-
-<h5 id="views">3. Views</h5>
-
-<p>In the Controller we ask it to render the template 'home.twig' where <u data-toggle="tooltip" data-placement="top" data-html="true"  title="User Interface">UI Logic</u> is represented there as the user interaction with the website.</p>
-
 <hr>
-<a class="page-link float-right" href="{{ "/ecosystem/models" | prepend: site.baseurl }}" aria-label="Next">
-	<span aria-hidden="true">Models &raquo;</span>
+<a class="page-link float-right" href="{{ "/ecosystem/get-started" | prepend: site.baseurl }}" aria-label="Next">
+	<span aria-hidden="true">Get Started &raquo;</span>
 	<span class="sr-only">Next</span>
 </a>

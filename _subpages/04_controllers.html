@@ -1,0 +1,100 @@
+---
+layout: page-content
+title: Controllers
+meta: Controllers are important entities in a framework, as most transactions are done in them. So knowing about Controller is very necessary to do website development using MVC concept.
+permalink: /ecosystem/controllers
+---
+
+<em class="d-block mb-3">Controllers are important entities in a framework, as most transactions are done in them. So knowing about Controller is very necessary to do website development using MVC concept.</em>
+
+<img src="{{ '../img/controllers.png' | prepend: site.base.url }}" alt="Writing on progress" class="img-fluid mb-3">
+
+<p>Controllers can also be likened to a bridge between users and information providers. As print media with readers would require sellers of newspapers, magazines, and etc.</p>
+
+<p>As you already know in the flow chart section of the <a href="{{ "/ecosystem/introductions#flow-diagram" | prepend: site.baseurl }}">Introductions</a> page. <em>Controllers</em> are among <em>views</em> and <em>models</em> which means that controllers are an important part of transacting data between users and services. following example create controller with Artisan Harmony:</p>
+
+<code class="mb-3">> php artisan make:controller HomeController # and enter</code>
+
+<p>in this example it is assumed that we have created a controller named <kbd>HomeController</kbd>, if you look at <kbd>app/Controllers</kbd> folder then you will find the <kbd>HomeController.php</kbd> file created by the artisan command.</p>
+
+{% highlight php %}
+<?php
+
+namespace App\Controllers;
+
+use Slim\Views\Twig as View;
+
+class HomeController extends Controller
+{
+    /**
+     * Method INDEX
+     *
+     * Ini adalah default dari HomeController
+     * @param [object] $request
+     * @param [object] $response
+     * @return object
+     * 
+     * Rendering view sesuai routes request
+     * routes/
+     * |__ web.php
+     * 
+     * $app->get('/controller/method/params', 'HomeController:index')
+     */
+
+     # protected $property = value|blank;
+
+    public function index($request, $response)
+    {
+        /**
+         * Anda bisa menyesuaikan view yang diiginkan dengan menggunakan
+         * Psuedo Variabel [ $this ] yang mewakili container atau
+         * wadah dari MVC Application ini.
+         * 
+         * ***********************************************************
+         * 
+         *      $this->view->render($response, 'page.twig');         *
+         * 
+         * ***********************************************************
+         */
+
+         # code..
+    }
+}
+{% endhighlight %}
+
+<p>if you want to display the template in the controller you can use the command line that already exists in the example above:</p>
+
+{% highlight php %}
+$this->view->render($response, 'page.twig');
+{% endhighlight %}
+
+<p>if you delete all comments on HomeController then it will look like this:</p>
+
+{% highlight php %}
+<?php
+
+namespace App\Controllers;
+
+use Slim\Views\Twig as View;
+
+class HomeController extends Controller
+{
+    public function index($request, $response)
+    {
+        $this->view->render($response, 'page.twig');
+    }
+}
+{% endhighlight %}
+
+<p>Here's the Controller's understanding of the Harmony Framework. read the next section to find out the notion of Routes in the Harmony Framework.</p>
+
+<hr>
+<a class="page-link float-left" href="{{ "/ecosystem/views" | prepend: site.baseurl }}" aria-label="Previous">
+	<span aria-hidden="true">&laquo; Views</span>
+	<span class="sr-only">Previous</span>
+</a>
+
+<a class="page-link float-right" href="{{ "/ecosystem/routes" | prepend: site.baseurl }}" aria-label="Next">
+	<span aria-hidden="true">Routes &raquo;</span>
+	<span class="sr-only">Next</span>
+</a>

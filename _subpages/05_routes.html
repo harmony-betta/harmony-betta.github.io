@@ -1,0 +1,45 @@
+---
+layout: page-content
+title: Routes
+meta: What is the function of the route? Its function to handle our request in URL then direct the application to call the page / resouce certain. In the routing we will recognize the GET and POST, the usual Harmony GET used to display the resource can be Function or Controller. While POST on Harmony is usually used to direct the form when submitted
+permalink: /ecosystem/routes
+---
+
+<em class="mb-2"><b>What is the function of the route?</b> Its function to handle our request in URL then direct the application to call the page / resouce certain. In the routing we will recognize the <kbd>GET</kbd> and <kbd>POST</kbd>, the usual Harmony <kbd>GET</kbd> used to display the resource can be Function or Controller. While <kbd>POST</kbd> on Harmony is usually used to direct the form when submitted.</em>
+
+<img src="{{ '../img/routes.png' | prepend: site.base.url }}" alt="Harmony Routes" class="img-fluid mb-2">
+
+<p>To handle requests from users or define anything that can be accessed from the URL of the website you can open <kbd>routes/web.php</kbd> file.</p>
+
+{% highlight php %}
+<?php
+
+$app->get('/', function($request, $response){
+	
+    return $this->view->render($response, 'welcome.twig');
+
+});
+{% endhighlight %}
+
+<p>By default Harmony already makes routes to manually display the Welcome Page (without controller) which routes routes the user to the Welcome Page when the URL is in <kbd>/</kbd> root.</p>
+
+<p>When you need a Controllers to handle <kbd>request</kbd> and provide a <kbd>response</kbd> the routes needs to be modified. In the previous section in <a href="{{ "/ecosystem/controllers" | prepend: site.baseurl }}">Controllers</a> explanation we have made a Controllers named <kbd>HomeController</kbd>, well now we will call <kbd>HomeContrller:index</kbd> on Routes.</p>
+
+{% highlight php %}
+<?php
+
+$app->get('/', 'HomeController:index');
+{% endhighlight %}
+
+<p>The routing will direct the user to the Welcome Page when the URL is rooted.</p>
+
+<hr>
+<a class="page-link float-left" href="{{ "/ecosystem/controllers" | prepend: site.baseurl }}" aria-label="Previous">
+	<span aria-hidden="true">&laquo; Controllers</span>
+	<span class="sr-only">Previous</span>
+</a>
+
+<a class="page-link float-right" href="{{ "/ecosystem/middleware" | prepend: site.baseurl }}" aria-label="Next">
+	<span aria-hidden="true">Middleware &raquo;</span>
+	<span class="sr-only">Next</span>
+</a>

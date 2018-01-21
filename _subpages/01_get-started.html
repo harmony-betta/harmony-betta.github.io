@@ -1,0 +1,106 @@
+---
+layout: page-content
+title: Get Started
+meta: How to Install Harmony Framework
+permalink: /ecosystem/get-started
+---
+
+<small>Install with Composer</small>
+<code>composer create-project --prefer-dist harmony-betta/harmony project-name -vvv</code>
+<small>Or Download ZIP File : <a href="https://github.com/harmony-betta/harmony/archive/0.1.zip"><i class="fa fa-fire"></i> Old Version {{ site.oldversion }}</i></a>&nbsp;&nbsp;<span> &mdash; </span>&nbsp;&nbsp;<a href="https://github.com/harmony-betta/harmony/archive/0.2.zip"><i class="fa fa-fire"></i> Latest Version {{ site.version }}</i></a></small>
+
+<h4 class="mt-3" id="install-globally">Install Harmony as Globally</h4>
+<p class="small mb-2">when you install Harmony <b>globally</b> then you no longer need to repeat commands <kbd>create-project</kbd> composer.</p>
+<code class="mb-3">> composer global require "harmony-betta/installer"
+Changed current directory to /home/betta/.composer
+Using version ^1.2 for harmony-betta/installer
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 2 installs, 0 updates, 0 removals
+  - Installing composer/installers (v1.5.0): Downloading (100%)         
+  - Installing harmony-betta/installer (v1.2): Downloading (100%)         
+Writing lock file
+Generating autoload files
+</code>
+
+<div class="card border-primary mb-3">
+   <div class="card-header bg-primary text-white"><i class="fa fa-info-circle"></i> Important!</div>
+   <div class="card-body">
+     <p class="small">Make sure to place the <kbd>~/.composer/vendor/bin</kbd> directory in your PATH so the kirby executable can be located by your system.</p>
+  </div>
+</div>
+
+<p>if the installation is complete please type the command in your Terminal / Command Prompt as follows:</p>
+
+<code class="mb-3">> harmony --version
+Harmony Installer 1.0.2</code>
+
+<p>Now you can install using Harmony Installer</p>
+
+<code class="mb-3">> harmony new harmony-project</code>
+
+<p class="small">*define the name of your project at the end of the command like <kbd>harmony new your-project-name</kbd></p>
+
+<h4>Directory Stucture!</h4>
+<div>
+{% highlight ruby %}
+.
+├── app
+   ├── Controllers
+   ├── Database
+   ├── Middleware
+   ├── Support
+├── artisan
+├── bin
+├── bootstrap
+├── composer.json
+├── composer.lock
+├── config
+   ├── app.container.php
+   ├── app.middleware.php
+├── gulpfile.js
+├── package.json
+├── public
+├── README.md
+├── resources
+   ├── assets
+   ├── views
+├── routes
+   ├── web.php
+└── vendor
+{% endhighlight %}
+</div>
+
+<h4 id="flow-diagram">Harmony Flow</h4>
+
+<img src="{{ "../img/mvc.png" | prepend: site.baseurl }}" alt="MVC" class="img-fluid mb-2">
+
+<p>The Harmony Framework has the exact same flow as the <em>"Laravel Framework"</em>, so if you ever use <em>"Laravel"</em> you will not be confused by using the <b><em>"Harmony Framework"</em></b> and apply otherwise.</p>
+
+<p>The Harmony Framework done behind the scenes is as follows: </p>
+
+<img src="{{ "../img/harmony-flow.png" | prepend: site.baseurl }}" alt="Harmony Flow" class="img-fluid">
+
+<h5 id="routes">1. Routes</h5>
+
+<p>Routing in the Harmony Framework is the definition to redirect users to a specific URL. The first parameter '/' the slash will redirect the user to the root of the website, the second parameter is the name of the Controller that will process the URL request.</p>
+
+<h5 id="controllers">2. Controllers</h5>
+
+<p>In the <kbd>app/Controllers/HomeController.php</kbd> file there is a line of code that will process the request from the route. Each Controller has an index method that will be processed first and provide a response in the form of a template or just a string to display to the user.</p>
+
+<h5 id="views">3. Views</h5>
+
+<p>In the Controller we ask it to render the template 'home.twig' where <u data-toggle="tooltip" data-placement="top" data-html="true"  title="User Interface">UI Logic</u> is represented there as the user interaction with the website.</p>
+
+<hr>
+<a class="page-link float-left" href="{{ "/ecosystem/introductions" | prepend: site.baseurl }}" aria-label="Previous">
+  <span aria-hidden="true">&laquo; Introductions</span>
+  <span class="sr-only">Previous</span>
+</a>
+
+<a class="page-link float-right" href="{{ "/ecosystem/models" | prepend: site.baseurl }}" aria-label="Next">
+	<span aria-hidden="true">Models &raquo;</span>
+	<span class="sr-only">Next</span>
+</a>
