@@ -19,20 +19,20 @@ permalink: /ecosystem/models
 </ol>
 
 {% highlight ruby %}
-➣ php artisan make:model Examples
-  File created (Examples.php) in app/Models/Examples.php
+➣ php artisan make:model Users
+  File created (Users.php) in app/Models/Users.php
 {% endhighlight %}
 
-<p>The <kbd>Examples.php</kbd> file located in <kbd>app/Models</kbd> looks like this:</p>
+<p>The <kbd>Users.php</kbd> file located in <kbd>app/Models</kbd> looks like this:</p>
 {% highlight ruby %}
-# app/Models/Examples.php
+# app/Models/Users.php
 <?php
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Examples extends Model
+class Users extends Model
 {
     /**
      * Undocumented variable
@@ -58,7 +58,7 @@ class Examples extends Model
 <p>everything you need to do the data interaction is already prepared.</p>
 
 <hr>
-<a class="page-link float-left" href="{{ "/ecosystem/introductions" | prepend: site.baseurl }}" aria-label="Previous">
+<a class="page-link float-left" href="{{ "/ecosystem/get-started" | prepend: site.baseurl }}" aria-label="Previous">
 	<span aria-hidden="true">&laquo; Introductions</span>
 	<span class="sr-only">Previous</span>
 </a>
