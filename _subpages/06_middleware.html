@@ -1,7 +1,83 @@
 ---
 layout: page-content
 title: Middleware
+meta: Middleware will help you determine the logic before the request is processed and will forward it to the response.
 permalink: /ecosystem/middleware
 ---
+<em>Middleware will allow developers to perform request processing before the response is returned to the user. So with Middleware developers can create a sort of Auth, and so fits with the needs.</em>
 
-<img src="{{ '../img/writing.png' | prepend: site.base.url }}" alt="Writing on progress" class="img-fluid" style="margin-bottom: 113px;">
+<img src="{{ '../img/middleware.png' | prepend: site.base.url }}" alt="Writing on progress" class="img-fluid mb-3">
+
+<h4 class="my-3">What is middleware?</h4>
+<p>Technically speaking, a middleware is a callable that accepts three arguments:</p>
+<ol>
+	<li><kbd>\Psr\Http\Message\ServerRequestInterface</kbd> - The PSR7 request object</li>
+	<li><kbd>\Psr\Http\Message\ResponseInterface</kbd> - The PSR7 response object</li>
+	<li><kbd>callable</kbd> - The next middleware callable</li>
+</ol>
+<p>It can do whatever is appropriate with these objects. The only hard requirement is that a middleware <b>MUST</b> return an instance of <kbd>\Psr\Http\Message\ResponseInterface</kbd>. Each middleware <b>SHOULD</b> invoke the next middleware and pass it Request and Response objects as arguments.</p>
+
+<h4 class="my-3">How does middleware work?</h4>
+<p>Different frameworks use middleware differently. Harmony adds middleware as concentric layers surrounding your core application. Each new middleware layer surrounds any existing middleware layers. The concentric structure expands outwardly as additional middleware layers are added.</p>
+
+<p>The last middleware layer added is the first to be executed.</p>
+
+<p>When you run the Harmony application, the Request and Response objects traverse the middleware structure from the outside in. They first enter the outer-most middleware, then the next outer-most middleware, (and so on), until they ultimately arrive at the Harmony application itself. After the Harmony application dispatches the appropriate route, the resultant Response object exits the Harmony application and traverses the middleware structure from the inside out. Ultimately, a final Response object exits the outer-most middleware, is serialized into a raw HTTP response, and is returned to the HTTP client.</p>
+
+<img src="{{ '../img/middleware-flow.png' | prepend: site.base.url }}" alt="Writing on progress" class="img-fluid mb-3">
+
+<h4 class="my-3">How do I write middleware?</h4>
+<p>Middleware is a callable that accepts three arguments: a <kbd>Request object</kbd>, a <kbd>Response object</kbd>, and the <kbd>next</kbd> middleware. Each middleware <b>MUST</b> return an instance of <kbd>\Psr\Http\Message\ResponseInterface</kbd>.</p>
+
+<p class="small mb-2"><i><kbd><i class="fa fa-terminal"></i></kbd> Create Middleware using Artisan Command</i></p>
+<code class="mb-2">> php artisan make:middleware SomeMiddleware
+File created (SomeMiddleware.php) in app/Middleware/SomeMiddleware.php
+</code>
+
+<h4 class="mb-2">Closure Middleware Example</h4>
+<p>This example middleware is a Closure.</p>
+{% highlight php %}
+<?php
+
+namespace App\Middleware;
+use App\Middleware\System\Middleware;
+
+class SomeMiddleware extends Middleware
+{
+    public function __invoke($request, $response, $next)
+    {
+        /**
+         * TODO Tulis middleware anda disini
+         */
+
+        $response = $next($request, $response);
+        return $response;
+    }
+}
+{% endhighlight %}
+
+<h4 class="my-3">How do I add middleware?</h4>
+
+<p>You may add middleware to a Harmony application, to an individual Harmony application route or to a route group. All scenarios accept the same middleware and implement the same middleware interface.</p>
+
+<p>When you create middleware with Artisan Command then middleware will be registered in <kbd>app/config/app.middleware.php</kbd></p>
+
+{% highlight php %}
+<?php
+
+// Definikan middleware buatan anda sendiri dibawah ini
+$app->add(new \App\Middleware\SomeMiddleware($container));
+{% endhighlight %}
+
+<p>if you need further explanation, you can read the documentation in <a href="https://www.slimframework.com/docs/concepts/middleware.html" target="_blank">Slim Framework - Middleware</a></p>
+
+<hr>
+<a class="page-link float-left" href="{{ "/ecosystem/routes" | prepend: site.baseurl }}" aria-label="Previous">
+	<span aria-hidden="true">&laquo; Routes</span>
+	<span class="sr-only">Previous</span>
+</a>
+
+<a class="page-link float-right" href="{{ "/ecosystem/authentications" | prepend: site.baseurl }}" aria-label="Next">
+	<span aria-hidden="true">Authentications &raquo;</span>
+	<span class="sr-only">Next</span>
+</a>
