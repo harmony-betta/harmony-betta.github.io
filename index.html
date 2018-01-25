@@ -7,9 +7,25 @@ permalink: /
 		<div class="container text-center">
 		  <h1 class="display-4">Harmony Framework</h1>
 		  <p class="lead">Build your web application like harmony of the universe!</p>
-		  <a href="https://github.com/harmony-betta/harmony/archive/0.1.zip" class="btn btn-outline-light btn-sm"><i class="fa fa-fire"></i> Old Version {{ site.oldversion }}</i></a>
+		  <!-- <a href="https://github.com/harmony-betta/harmony/archive/0.1.zip" class="btn btn-outline-light btn-sm"><i class="fa fa-fire"></i> Old Version {{ site.oldversion }}</i></a>
 		  &nbsp;&nbsp;<span><i class="fa fa-arrow-right"></i></span>&nbsp;&nbsp;
-		  <a href="https://github.com/harmony-betta/harmony/archive/0.2.zip" class="btn btn-outline-light btn-sm"><i class="fa fa-fire"></i> Latest Version {{ site.version }}</i></a>
+		  <a href="https://github.com/harmony-betta/harmony/archive/0.2.zip" class="btn btn-outline-light btn-sm"><i class="fa fa-fire"></i> Latest Version {{ site.version }}</i></a> -->
+		  <div class="card mx-auto terminal mb-3">
+			  <div class="card-header small d-flex flex-row">
+			  	<div class="float-left d-flex flex-row">
+			  		<div class="close"></div>
+			  		<div class="minimize"></div>
+			  		<div class="maximize"></div>
+			  	</div>
+			  </div>
+			  <div class="card-body text-justify">
+					<p>$ composer install -g harmony-betta/installer</p>
+					<p>$ harmony new your-project-name <span class="comment"># this command will create harmony project</span></p>
+			  </div>
+			</div>
+			<div class="text-left small" style="width: 55%;margin: auto;">
+			    <i class="fa fa-info-circle"></i> Make sure you have <kbd>/home/user/.composer</kbd> directory. Then check your <kbd>$PATH</kbd> to <kbd>/home/user/.composer/vendor/bin</kbd>
+			</div>
 		</div>
 	</div>
 
@@ -42,25 +58,34 @@ permalink: /
 		</div>
 	</div>
 
-	<div class="bg-command-line-artisan d-flex align-items-center align-items-sm-center">
-		<div class="wrapper p-5 text-white ml-auto">
-			<h2>Using Artisan Command</h2>
-			<p>Command Line is easy to use to help build your project.</p>
-		</div>
+	<div class="container my-3">
+		<img src="{{ "../img/harmony-tinker.png" | prepend: site.baseurl }}" alt="Harmony Artisan Command" class="img-fluid">
+		<p class="display-4 text-center mb-5">Harmony Tinker makes your work easier. interact directly with the model and application database in your project.</p>
+		<hr>
 	</div>
 
-	<div class="container text-center p-5">
-		<h2>Get Coffee Now!</h2>
-		<blockquote class="blockquote text-center">
-			<p class="mb-0 small font-italic">The best moment in my life is... when i encountered an error and i can fix it!</p>
-			<footer class="blockquote-footer" title="Founder Betta Dev Indonesia">Imam Ali Mustofa</footer>
-		</blockquote>
-	</div>
-
-	<div class="bg-documentation d-flex align-items-center align-items-sm-center">
-		<div class="wrapper p-5 text-white mr-auto">
-			<h2>Read Documentations</h2>
-			<p>Maybe it will make it easier for you to get to know more about Harmony Framework.</p>
-			<a href="{{ "/ecosystem/introductions" | prepend: site.baseurl }}" class="btn btn-outline-light"><i class="fa fa-book"></i> User Guide</a>
+	<div class="container-fluid py-5 text-center">
+		<h3 class="mb-4">Harmony Support</h3>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 p-3">
+					<i class="fa fa-bullhorn fa-5x m-3 text-primary"></i>
+					<h4>Podcast &amp; Lessons</h4>
+					<p>Available Podcasts to better understand Harmony Framework, talking about Harmony Framework!</p>
+					<a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Not Available at this time." class="btn btn-outline-primary">Get Free Now!</a>
+				</div>
+				<div class="col-md-4 p-3">
+					<i class="fa fa-slack fa-5x m-3 text-primary"></i>
+					<h4>Harmony Slack Workspace</h4>
+					<p>Available Slack Channel to help developers communicate with each other about Harmony Framework.</p>
+					<a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fjoin.slack.com%2Ft%2Fharmonyframework%2Fshared_invite%2FenQtMzAxNjkxODg5NjY0LTk4ZTZhZjhkMmMwMGZjODQ4ZGYwYWU1ODlkZDljNDZjNjk4MTMyZWEyYWQ0OWRhNjAyNGRjNjNkMTgxY2JlNTU&h=ATNXrIpSIVbhVqAEJSj5m-ZPYHiOV0FGgE4h3q3R2YKxk9BSJ6uPJErUl-zUuK4ESMGapnRmF8QpAevlGA59ch1HTx0xp5B-sDDE6et2raLDNbFdXmCSBOrHFQ9ToLh4zUzEvLculF4pGS51KKwG15fm6LWubEZm6tq8P348oYYCdrmyt71ZwDsSGx9Mjor5G3g8pzTOu5QEfA0PJyp2oXjSpzxl5dvs8pXGvrV_498Eo1MWJzmnlE8cl1mg8Bjh18EA1miMUzOLBr-WSStmQByj4INdAtizhHw" target="_blank" class="btn btn-outline-primary">Join Now!</a>
+				</div>
+				<div class="col-md-4 p-3">
+					<i class="fa fa-book fa-5x m-3 text-primary"></i>
+					<h4>User Guide</h4>
+					<p>The Harmony Framework documentation is a guide book for starting your project easier.</p>
+					<a href="{{ "/ecosystem/introductions" | prepend: site.baseurl }}" class="btn btn-outline-primary">Read Documentation!</a>
+				</div>
+			</div>
 		</div>
 	</div>

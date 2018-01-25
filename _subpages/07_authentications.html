@@ -4,4 +4,234 @@ title: Authentications
 permalink: /ecosystem/authentications
 ---
 
-<img src="{{ '../img/writing.png' | prepend: site.base.url }}" alt="Writing on progress" class="img-fluid" style="margin-bottom: 113px;">
+<p class="text-center font-italic">Talking about frameworks may be the first question in the head is <br> <b>"How can I create Authentications?"</b>.</p>
+
+<img src="{{ '../img/auth-scaffolding.png' | prepend: site.base.url }}" alt="Writing on progress" class="img-fluid mb-3">
+
+<p>We will give you an explanation easily and everything is ready in one command!</p>
+
+<p>By using Artisan Command you can easily create authentication and maybe you need multiple auth? we will explain it in detail to you for free! Yaayy! nice!</p>
+
+<p>Hamorny Framework will make you very easy to do the job and give you how beautiful the universe with its rhythm.</p>
+
+<h4 class="mb-3">Then how do I make an authentication?</h4>
+
+<p>Let's talk about authentication. In a website application of course you want to create a control room with a key that may be just you I have it like Website Blog or you want to give keys to certain spaces to your website users like social media, etc.</p>
+
+<h4 class="mb-3">Get Started!</h4>
+
+<p>Check if you already have the latest version of Harmony Framework, if you are in doubt or do not want to be hard. Simply create a project with the latest Harmony Installer. Make sure you have updated Harmony Installer <kbd>composer global update</kbd>.</p>
+
+<p>Then open your terminal or commad prompt, go to the framework harmony directory project. When the command to create authentication as follows:</p>
+<p>Before you make your directory authentication look like this:</p>
+<code class="mb-3"># Controllers Folder
+app/Controllers/
+└── Controller.php
+
+# Migrations Folder
+app/Database/
+└── migrations
+
+# Resources Views Folder
+resources/views/
+├── error
+│   └── 404.twig
+└── welcome.twig
+</code>
+
+<p>Now type and hit enter!</p>
+
+<code class="mb-3">> php artisan make:auth-full # enter
+Create Full Auth Scaffolding Successfully!
+</code>
+
+<p>After created, now check the Controllers, Migrations, and Resources directory:</p>
+<code class="mb-3"># Controllers Folder
+app/Controllers/
+├── Auth
+│   ├── AuthController.php
+│   └── PasswordController.php
+└── Controller.php
+
+# Migrations Folder
+app/Database/
+└── migrations
+    └── 20180125142442_Users.php
+
+# Models now available for you
+app/Models/
+└── Users.php
+
+# Resources Views Folder
+resources/views/
+├── auth
+│   ├── home.twig
+│   ├── password
+│   │   └── change.twig
+│   ├── signin.twig
+│   └── signup.twig
+├── error
+│   └── 404.twig
+└── welcome.twig
+</code>
+
+<div class="card">
+	<div class="card-body bg-danger text-white">
+		<i class="fa fa-info-circle"></i> If you have opened your application on the browser and refresh it then you will get an error.
+		<code>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'harmony.users' doesn't exist (SQL: select * from `users` where `users`.`id` is null limit 1)</code>
+	</div>
+</div>
+
+<h4 class="my-3">How to Fix it</h4>
+
+<p>If you have not created a database, then create a database with the name according to your needs. replace the database settings in the ".env" file include the database username and password. Then create a Users table in your database.</p>
+
+<p><b>We recommend it with Migrations files already in the folder "migrations" to create <kbd>users</kbd> table.</b></p>
+
+<p>Copy and paste the following script into your migration file.</p>
+
+{% highlight php %}
+<?php
+
+use Phpmig\Migration\Migration;
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+class Users extends Migration
+{
+    /**
+     * Do the migration
+     */
+    public function up()
+    {
+        Capsule::schema()->create('users', function($table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email');
+            $table->string('password');
+            $table->timestamps();
+        });
+
+    }
+
+    /**
+     * Undo the migration
+     */
+    public function down()
+    {
+        Capsule::schema()->drop('users');
+    }
+}
+{% endhighlight %}
+
+<p>Check the status of the database whether the table still has a <kbd class="bg-danger text-white">down</kbd> status which means you have not migrated to the database server. To create a user table <kbd class="bg-success text-white">up</kbd> to the database server you need to type the following command:</p>
+
+{% highlight ruby %}
+> php artisan db:status # enter to check status
+ Status   Migration ID    Migration Name 
+-----------------------------------------
+ down  	 20180125142442   Users
+{% endhighlight %}
+
+<p>then you can use flag <kbd>-t</kbd> to <kbd class="bg-success">up</kbd> your specific migrations.</p>
+
+{% highlight ruby %}
+> php artisan db:migrate -t  20180125142442 # enter to migrate
+ == 20180125142442 Users migrating
+ == 20180125142442 Users migrated 1.1169s
+{% endhighlight %}
+
+<p>Now you can refresh your page in browser and Viola !! now you already have authentication on your website. But you do not have a user yet. to make your user click "register" or you can use <kbd class="bg-info text-white">Harmony Tinker</kbd> to create your user data.</p>
+
+{% highlight ruby %}
+> php artisan tinker
+Psy Shell v0.8.17 (PHP 7.1.13-1+ubuntu16.04.1+deb.sury.org+1 — cli) by Justin Hileman
+>>> App\Models\Users::all();
+== SQL: select * from `users`
+== Params: 
+
+=> Illuminate\Database\Eloquent\Collection {#313
+     all: [],
+   }
+>>>
+{% endhighlight %}
+
+<p>now you do not have users, let's make it with tinker!</p>
+
+{% highlight ruby %}
+> php artisan tinker
+Psy Shell v0.8.17 (PHP 7.1.13-1+ubuntu16.04.1+deb.sury.org+1 — cli) by Justin Hileman
+>>> $user = new App\Models\Users;
+=> App\Models\Users {#307}
+>>> $user->name = 'Imam Ali Mustofa';
+=> "Imam Ali Mustofa"
+>>> $user->email = 'fscodexxx@darkteminal.union'
+=> "fscodexxx@darkteminal.union"
+>>> $user->password = password_hash('1341t7r13ig1', PASSWORD_DEFAULT);
+=> "$2y$10$OERkOlvWjJIxweE9sR/f8u7i.arDBKPlqMqsnHkGj2Bl6EGzeA5PK"
+>>> $user->save();
+== SQL: insert into `users` (`name`, `email`, `password`, `updated_at`, `created_at`) values (?, ?, ?, ?, ?)
+== Params: Imam Ali Mustofa, fscodexxx@darkteminal.union, $2y$10$OERkOlvWjJIxweE9sR/f8u7i.arDBKPlqMqsnHkGj2Bl6EGzeA5PK, 2018-01-25 08:09:15, 2018-01-25 08:09:15
+
+=> true
+>>>
+{% endhighlight %}
+
+<p>Now check your Users Models in the Models folder to make sure your table's fillable columns.</p>
+{% highlight php %}
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Users extends Model
+{
+    /**
+     * Undocumented variable
+     *
+     * @var $table adalah nama tabel dari model anda
+     * @var $fillable adalah kolom apa saja yang anda ijinkan untuk diisi
+     * @method FunctionName adalah method yang anda definisikan untuk model
+     * 
+     * @return any
+     * 
+     * protected $table = 'Users';
+     * 
+     * protected $fillable = ['name','email','password'];
+     * public function FunctionName(Type $var = null)
+     * {
+     *       # code..
+     * }
+     */
+
+}
+{% endhighlight %}
+
+<p>delete the comment on Class Users and replace with the script as follows:</p>
+
+{% highlight php %}
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Users extends Model
+{
+   protected $table = 'Users';
+   protected $fillable = ['name','email','password'];
+}
+{% endhighlight %}
+
+<p>In the next step you can use those models on the Controller you created.</p>
+
+<hr>
+<a class="page-link float-left" href="{{ "/ecosystem/middleware" | prepend: site.baseurl }}" aria-label="Previous">
+	<span aria-hidden="true">&laquo; Middleware</span>
+	<span class="sr-only">Previous</span>
+</a>
+
+<a class="page-link float-right" href="{{ "/ecosystem/ajax" | prepend: site.baseurl }}" aria-label="Next">
+	<span aria-hidden="true">AJAX &raquo;</span>
+	<span class="sr-only">Next</span>
+</a>
