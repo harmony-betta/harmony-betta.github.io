@@ -47,6 +47,42 @@ body {
 	height: 350px;
 }
 
+.terminal{
+	background: #222333;
+	width: 60%;
+	font-size: 14px;
+	font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+	.close{
+		padding: 7px;
+		margin: 0px 2px;
+		background: red;
+		border-radius: 50%;
+		height: 7px;
+		width: 7px;
+	}
+	.minimize{
+		padding: 7px;
+		margin: 0px 2px;
+		background: yellow;
+		border-radius: 50%;
+		height: 7px;
+		width: 7px;
+	}
+	.maximize{
+		padding: 7px;
+		margin: 0px 2px;
+		background: green;
+		border-radius: 50%;
+		height: 7px;
+		width: 7px;
+	}
+	.comment{
+		color: #7a7a7a;
+		font-style: italic;
+		font-size: 12px;
+	}
+}
+
 @media (max-width: 360px) {
 	.bg-command-line-artisan {
 		background: #00c6ff url('../img/bg-command-line.png') no-repeat bottom center;
