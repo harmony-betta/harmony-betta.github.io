@@ -4,7 +4,7 @@ version: 1.0.2
 oldversion: 1.0.1
 email: bettadevindonesia@gmail.com
 description: >
-  A guide to getting started with Harmony Framework.
+  Harmony Framework is a PHP framework built under the Slim Framework. Harmony is a unit of some famous packages that have been widely used by developers in the world. Initially Harmony Framework was built for personal purposes to facilitate my work as a website developer, but I also want Harmony Framework can be useful for other developers.
 baseurl: ""
 url: "http://localhost:4000"
 twitter_username: bettadevindonesia
