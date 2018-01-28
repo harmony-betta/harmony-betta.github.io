@@ -66,14 +66,22 @@ app/Models/
 # Resources Views Folder
 resources/views/
 ├── auth
+│   ├── forgot-password.twig
 │   ├── home.twig
 │   ├── password
-│   │   └── change.twig
+│   │   ├── change.twig
+│   │   ├── forgot-password.twig
+│   │   └── reset-password.twig
 │   ├── signin.twig
 │   └── signup.twig
+├── email
+│   └── forgot-password-email.twig
 ├── error
 │   └── 404.twig
+├── partials
+│   └── flash.twig
 └── welcome.twig
+
 </code>
 
 <div class="card">
@@ -109,6 +117,7 @@ class Users extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->string('password_reset');
             $table->timestamps();
         });
 
@@ -196,9 +205,9 @@ class Users extends Model
      * 
      * @return any
      * 
-     * protected $table = 'Users';
+     * protected $table = 'users';
      * 
-     * protected $fillable = ['name','email','password'];
+     * protected $fillable = ['name','email','password', 'password_reset'];
      * public function FunctionName(Type $var = null)
      * {
      *       # code..
@@ -219,8 +228,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Users extends Model
 {
-   protected $table = 'Users';
-   protected $fillable = ['name','email','password'];
+   protected $table = 'users';
+   protected $fillable = ['name','email','password', 'password_reset'];
 }
 {% endhighlight %}
 
